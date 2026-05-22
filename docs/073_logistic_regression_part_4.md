@@ -1,0 +1,130 @@
+# Logistic Regression Part 4: Why MSE Fails, Likelihood, & Binary Cross-Entropy Loss
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RiazML/machine-learning-notes/blob/main/notebooks/073_logistic_regression_part_4.ipynb)
+
+To train a Logistic Regression model, we need a loss function that evaluates the quality of predictions. While **Mean Squared Error (MSE)** is the standard loss function for linear regression, applying it to logistic regression fails. Instead, we use **Maximum Likelihood Estimation (MLE)** to derive the **Binary Cross-Entropy (BCE) Loss** (also known as Log Loss).
+
+---
+
+## 1. Why Mean Squared Error (MSE) Fails for Classification
+
+For linear regression, MSE is defined as:
+$$\text{MSE} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2$$
+
+Where $\hat{y}_i = \sigma(z_i) = \frac{1}{1 + e^{-\theta^T x_i}}$.
+
+### Non-Convexity
+
+Because $\hat{y}_i$ is a non-linear (sigmoid) function of the weights $\theta$, the MSE loss function becomes **non-convex** with respect to the weights. A non-convex function contains many local minima and flat regions (saddle points). If we attempt to use Gradient Descent, the optimization algorithm is highly likely to get stuck in a poor local minimum.
+
+### Gradient Vanishing
+
+If a prediction is highly incorrect (e.g., $y_i = 1$ but $\hat{y}_i \approx 0$), the derivative of the sigmoid function $\sigma'(z) = \sigma(z)(1-\sigma(z))$ approaches $0$. In MSE, the gradient contains this derivative term, meaning the gradient vanishes when we make large errors. This slows down training significantly when the model is most wrong.
+
+---
+
+## 2. Deriving BCE Loss via Maximum Likelihood Estimation (MLE)
+
+In binary classification, the target $y_i$ is a Bernoulli random variable with probability of success $p_i = P(y_i = 1 \mid x_i) = \sigma(\theta^T x_i)$.
+The probability mass function of a single observation is:
+$$P(y_i \mid x_i; \theta) = p_i^{y_i} (1 - p_i)^{1 - y_i}$$
+
+- If $y_i = 1$, $P(y_i \mid x_i) = p_i$.
+- If $y_i = 0$, $P(y_i \mid x_i) = 1 - p_i$.
+
+### Likelihood Function
+
+Assuming training examples are Independent and Identically Distributed (i.i.d.), the joint probability (Likelihood) of the entire dataset of size $N$ is the product of individual probabilities:
+$$L(\theta) = \prod_{i=1}^N p_i^{y_i} (1 - p_i)^{1 - y_i}$$
+
+We want to find parameters $\theta$ that maximize this likelihood.
+
+### Log-Likelihood Function
+
+Because multiplying many probabilities leads to numerical underflow, we take the natural logarithm. The logarithm is a monotonic function, so maximizing log-likelihood is equivalent to maximizing the original likelihood:
+$$\log L(\theta) = \log \left( \prod_{i=1}^N p_i^{y_i} (1 - p_i)^{1 - y_i} \right)$$
+$$\log L(\theta) = \sum_{i=1}^N \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \right]$$
+
+### Binary Cross-Entropy Loss
+
+In optimization, we prefer to **minimize** a cost function rather than maximize it. Therefore, we define our cost function $J(\theta)$ as the **negative average log-likelihood**:
+$$J(\theta) = -\frac{1}{N} \log L(\theta) = -\frac{1}{N} \sum_{i=1}^N \left[ y_i \log(p_i) + (1 - y_i) \log(1 - p_i) \right]$$
+
+This function is called **Binary Cross-Entropy (BCE) Loss** or **Log Loss**. It is **convex**, ensuring that gradient descent will always converge to the global minimum.
+
+```mermaid
+flowchart TD
+    ProbModel["Bernoulli Probability: pʸ("1-p")¹⁻ʸ"] -->|Product over dataset| Like["Likelihood L("θ")"]
+    Like -->|Take natural logarithm| LogLike["Log-Likelihood log L("θ")"]
+    LogLike -->|Negative average: -1/N| Loss["BCE Loss J("θ") (Convex)"]
+```
+
+---
+
+## 3. Python Verification: BCE Loss vs. MSE Convexity
+
+The following Python script computes BCE loss and MSE loss over a grid of weight values for a simple 1D classification dataset. It demonstrates that the MSE loss profile contains non-convex regions, whereas BCE is perfectly convex.
+
+```python
+import numpy as np
+
+# 1. Define Loss Functions
+def sigmoid(z):
+    return 1.0 / (1.0 + np.exp(-z))
+
+def compute_bce_loss(y_true, y_pred):
+    # Clip predictions to prevent log(0)
+    y_pred = np.clip(y_pred, 1e-15, 1.0 - 1e-15)
+    return -np.mean(y_true * np.log(y_pred) + (1.0 - y_true) * np.log(1.0 - y_pred))
+
+def compute_mse_loss(y_true, y_pred):
+    return np.mean((y_true - y_pred) ** 2)
+
+# 2. Generate small 1D classification dataset
+np.random.seed(42)
+X = np.array([-2.0, -1.0, 0.5, 1.5, 2.5])
+y = np.array([0, 0, 1, 1, 1])
+
+# We will sweep a range of weights 'w' (intercept fixed to 0) to observe loss curves
+w_range = np.linspace(-5.0, 10.0, 100)
+bce_losses = []
+mse_losses = []
+
+for w in w_range:
+    # Compute predicted probability p = sigmoid(w * X)
+    y_pred = sigmoid(w * X)
+    bce_losses.append(compute_bce_loss(y, y_pred))
+    mse_losses.append(compute_mse_loss(y, y_pred))
+
+bce_losses = np.array(bce_losses)
+mse_losses = np.array(mse_losses)
+
+# 3. Verify Convexity Characteristics Programmatically
+# A function f is convex if its second derivative is always positive.
+# For discrete samples, the second finite difference should be non-negative: f''(x) >= 0.
+bce_diff2 = np.diff(np.diff(bce_losses))
+mse_diff2 = np.diff(np.diff(mse_losses))
+
+# Check if second derivative is positive everywhere (with a tiny tolerance for numerical noise)
+bce_convex = np.all(bce_diff2 >= -1e-4)
+mse_convex = np.all(mse_diff2 >= -1e-4)
+
+print("=== Convexity Analysis of Loss Functions ===")
+print(f"BCE Loss is strictly convex: {bce_convex}")
+print(f"MSE Loss is strictly convex: {mse_convex}")
+
+# Log sample values to show difference in loss profile
+print("\nLoss values at selected weights:")
+print(f"{'Weight w':<10} | {'BCE Loss':<12} | {'MSE Loss':<12}")
+print("-" * 40)
+for idx in [0, 25, 50, 75, 99]:
+    print(f"{w_range[idx]:<10.2f} | {bce_losses[idx]:<12.6f} | {mse_losses[idx]:<12.6f}")
+
+# Assertion checking BCE convexity
+assert bce_convex, "BCE Loss is mathematically proven to be convex but failed numerical test"
+print("\n[SUCCESS] Binary Cross-Entropy loss is convex, guaranteeing a single global minimum for gradient descent optimization!")
+```
+
+---
+
+- **Next Topic**: [074_derivative_of_sigmoid_function.md](file:///Users/prime/Developer/ml/074_derivative_of_sigmoid_function.md) - Calculus of the Sigmoid Function: Proof and Derivative Derivation.

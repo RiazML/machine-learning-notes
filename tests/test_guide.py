@@ -4,7 +4,8 @@ import sys
 
 def audit_repository():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    files = sorted([f for f in os.listdir(base_dir) if re.match(r"^\d{3}_.*\.md$", f)])
+    docs_path = os.path.join(base_dir, "docs")
+    files = sorted([f for f in os.listdir(docs_path) if re.match(r"^\d{3}_.*\.md$", f)])
     
     print(f"Auditing {len(files)} study guide markdown files...")
     
@@ -14,7 +15,7 @@ def audit_repository():
     errors = []
     
     for file_name in files:
-        file_path = os.path.join(base_dir, file_name)
+        file_path = os.path.join(docs_path, file_name)
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
         

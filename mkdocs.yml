@@ -1,0 +1,218 @@
+site_name: "Machine Learning Notes"
+site_description: "A comprehensive, structured curriculum covering foundational ML concepts, preprocessing, regression, classification, tree-based models, and clustering."
+site_author: "Riaz"
+site_url: "https://riazml.github.io/machine-learning-notes/"
+repo_url: "https://github.com/RiazML/machine-learning-notes"
+repo_name: "RiazML/machine-learning-notes"
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+  font:
+    text: Outfit
+    code: Fira Code
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_style: default
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      type: date
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - "Foundations & Setup":
+      - "What is Machine Learning?": "001_what_is_machine_learning.md"
+      - "AI vs. ML vs. DL": "002_ai_vs_ml_vs_dl_for.md"
+      - "Types of Machine Learning": "003_types_of_machine_learning_for_beginners.md"
+      - "Batch Machine Learning (Offline Learning)": "004_batch_machine_learning.md"
+      - "Online Machine Learning (Incremental Learning)": "005_online_machine_learning.md"
+      - "Instance-based vs. Model-based Learning": "006_instance-based_vs_model-based_learning.md"
+      - "Challenges in Machine Learning": "007_challenges_in_machine_learning.md"
+      - "Real-World Applications of Machine Learning": "008_application_of_machine_learning.md"
+      - "Machine Learning Development Life Cycle (MLDLC)": "009_machine_learning_development_life_cycle.md"
+      - "Data Roles - Data Engineer vs. Data Analyst vs. Data Scientist vs. ML Engineer": "010_data_engineer_vs_data_analyst_vs.md"
+      - "What are Tensors?": "011_what_are_tensors.md"
+      - "Installing Anaconda & Development Environments": "012_installing_anaconda_&_colab_setup.md"
+      - "End-to-End Machine Learning Toy Project": "013_end-to-end_toy_project.md"
+      - "Framing Machine Learning Problems": "014_framing_ml_problems.md"
+  - "Data Preprocessing & EDA":
+      - "Working with CSV Files in Pandas": "015_working_with_csv_files_in_pandas.md"
+      - "Working with JSON & SQL in Pandas": "016_working_with_json_sql.md"
+      - "Fetching Data From an API": "017_fetching_data_from_an_api.md"
+      - "Fetching Data Using Web Scraping": "018_fetching_data_using_web_scraping.md"
+      - "Understanding Your Data": "019_understanding_your_data.md"
+      - "Exploratory Data Analysis (EDA) - Univariate Analysis": "020_eda_using_univariate_analysis.md"
+      - "EDA using Bivariate & Multivariate Analysis": "021_eda_using_bivariate_and_multivariate_analysis.md"
+      - "Automated EDA with Pandas Profiling (`ydata-profiling`)": "022_pandas_profiling.md"
+      - "What is Feature Engineering?": "023_what_is_feature_engineering.md"
+      - "Feature Scaling - Standardization": "024_feature_scaling.md"
+      - "Feature Scaling - Normalization": "025_feature_scaling.md"
+      - "Encoding Categorical Data (Ordinal Encoding & Label Encoding)": "026_encoding_categorical_data.md"
+      - "One-Hot Encoding (OHE)": "027_one_hot_encoding.md"
+      - "ColumnTransformer in Machine Learning": "028_column_transformer_in_machine_learning.md"
+      - "Machine Learning Pipelines A–Z": "029_machine_learning_pipelines_a-z.md"
+      - "Function Transformer & Mathematical Transforms": "030_function_transformer.md"
+      - "Power Transformer: Box-Cox & Yeo-Johnson Transformations": "031_power_transformer.md"
+      - "Discretization: Binning & Binarization": "032_binning_and_binarization.md"
+      - "Handling Mixed Variables": "033_handling_mixed_variables.md"
+      - "Handling Date & Time Variables": "034_handling_date_and_time_variables.md"
+      - "Handling Missing Data Part 1: Complete Case Analysis (CCA)": "035_handling_missing_data.md"
+      - "Handling Missing Data Part 2: Numerical Mean/Median/Arbitrary Imputation": "036_handling_missing_data.md"
+      - "Handling Missing Data Part 3: Categorical Imputation": "037_handling_missing_categorical_data.md"
+      - "Missing Indicator & Random Sample Imputation": "038_missing_indicator.md"
+      - "K-Nearest Neighbors Imputer (KNNImputer)": "039_knn_imputer.md"
+      - "Multivariate Imputation by Chained Equations (MICE)": "040_multivariate_imputation_by_chained_equations_for.md"
+      - "What are Outliers?": "041_what_are_outliers.md"
+      - "Outlier Detection & Removal Using Z-Score": "042_outlier_detection_and_removal_using_z-score.md"
+      - "Outlier Detection & Removal Using the Interquartile Range (IQR) Method": "043_outlier_detection_and_removal_using_the.md"
+      - "Outlier Detection Using the Percentile Method": "044_outlier_detection_using_the_percentile_method.md"
+      - "Feature Construction & Feature Splitting": "045_feature_construction.md"
+      - "The Curse of Dimensionality": "046_curse_of_dimensionality.md"
+      - "Principal Component Analysis (PCA): Geometric Intuition": "047_principle_component_analysis_pca.md"
+      - "Principal Component Analysis (PCA): Mathematical Derivation": "048_principle_component_analysis_pca.md"
+      - "Practical PCA in Scikit-Learn": "049_principle_component_analysis_pca.md"
+  - "Supervised Learning: Regression":
+      - "Simple Linear Regression (OLS closed-form)": "050_simple_linear_regression.md"
+      - "Simple Linear Regression: Geometric Interpretation & Custom Implementation": "051_simple_linear_regression.md"
+      - "Regression Evaluation Metrics: Mathematical Derivations & Code Demo": "052_regression_metrics.md"
+      - "Multiple Linear Regression: Geometric Intuition & Scikit-Learn Implementation": "053_multiple_linear_regression.md"
+      - "Multiple Linear Regression: Mathematical Derivation of the Normal Equation": "054_multiple_linear_regression.md"
+      - "Multiple Linear Regression: Coding the Normal Equation from Scratch": "055_multiple_linear_regression.md"
+      - "Assumptions of Linear Regression & Diagnostic Tests in Python": "056_what_are_the_main_assumptions_of.md"
+      - "Gradient Descent Optimization from Scratch": "057_gradient_descent_from_scratch.md"
+      - "Vectorized Batch Gradient Descent for Multiple Linear Regression": "058_batch_gradient_descent_with_code_demo.md"
+      - "Stochastic Gradient Descent (SGD)": "059_stochastic_gradient_descent.md"
+      - "Mini-Batch Gradient Descent": "060_mini-batch_gradient_descent.md"
+      - "Polynomial Regression: Mathematical Formulation & Pipeline Implementation": "061_polynomial_regression.md"
+      - "The Bias-Variance Trade-off: Mathematical Decomposition & Simulation": "062_bias_variance_trade-off.md"
+      - "Ridge Regression (L2 Regularization): Intuition & Coefficient Shrinkage": "063_ridge_regression_part_1.md"
+      - "Ridge Regression: Closed-form Mathematical Matrix Derivation": "064_ridge_regression_part_2.md"
+      - "Ridge Regression: Geometric Interpretation & Lagrange Multipliers": "065_ridge_regression_part_3.md"
+      - "5 Key Points on Regularization: Theory & Practical Implementation": "066_5_key_points.md"
+      - "Lasso Regression (L1 Regularization): Cost Function & Feature Selection": "067_lasso_regression.md"
+      - "Why Lasso Regression Creates Sparsity: Geometry & Coordinate Descent": "068_why_lasso_regression_creates_sparsity.md"
+      - "Elastic Net Regression: Combining L1 and L2 Regularizations": "069_elasticnet_regression.md"
+  - "Supervised Learning: Classification":
+      - "Introduction to Logistic Regression: Odds, Log-Odds, & The Sigmoid Function": "070_logistic_regression_part_1.md"
+      - "The Perceptron Trick: Binary Classification from a Geometric Perspective": "071_logistic_regression_part_2.md"
+      - "Logistic Regression Part 3: Deep Dive into Probability, Odds, Log-Odds, and Sigmoid Symmetry": "072_logistic_regression_part_3.md"
+      - "Logistic Regression Part 4: Why MSE Fails, Likelihood, & Binary Cross-Entropy Loss": "073_logistic_regression_part_4.md"
+      - "Calculus of the Sigmoid Function: Derivation & Numerical Verification": "074_derivative_of_sigmoid_function.md"
+      - "Logistic Regression Part 5: Gradient Derivation & Gradient Descent from Scratch": "075_logistic_regression_part_5.md"
+      - "Model Evaluation: Accuracy & The Confusion Matrix": "076_accuracy_and_confusion_matrix.md"
+      - "Class Imbalance Metrics: Precision, Recall, & F1-Score": "077_precision_recall_and_f1_score.md"
+      - "Model Evaluation: The ROC Curve & AUC": "078_roc_curve_in_machine_learning.md"
+      - "Softmax Regression (Multinomial Logistic Regression)": "079_softmax_regression.md"
+      - "Non-Linear Boundaries: Polynomial Logistic Regression": "080_polynomial_features_in_logistic_regression.md"
+      - "Logistic Regression Hyperparameters: Regularization & Solvers": "081_logistic_regression_hyperparameters.md"
+      - "Naive Bayes Classifier Part 1: Conditional Probability": "082_naive_bayes_classifier.md"
+      - "Naive Bayes Classifier Part 2: Independent Events": "083_naive_bayes_classifier.md"
+      - "Naive Bayes Classifier Part 3: Mutually Exclusive Events": "084_naive_bayes_classifier.md"
+      - "Naive Bayes Classifier Part 4: Derivation of Bayes' Theorem": "085_naive_bayes_classifier.md"
+      - "Naive Bayes Classifier Part 5: The Law of Total Probability": "086_naive_bayes_classifier.md"
+      - "Naive Bayes Classifier Part 6: The \"Naive\" Assumption": "087_naive_bayes_classifier.md"
+      - "Naive Bayes Classifier Part 7: Log Likelihood & Laplace Smoothing": "088_naive_bayes_classifier.md"
+      - "Naive Bayes Classifier Part 8: Bag-of-Words Text Classification": "089_naive_bayes_classifier.md"
+      - "Naive Bayes Classifier Part 9: Gaussian Naive Bayes": "090_naive_bayes_part_9.md"
+      - "K-Nearest Neighbors (KNN) Classifier": "091_what_is_k_nearest_neighbors.md"
+      - "Support Vector Machines (Geometric Intuition)": "092_support_vector_machines.md"
+      - "Mathematics of SVM - Primal Formulation": "093_mathematics_of_svm.md"
+      - "Mathematics of Support Vector Machine: Dual Formulation & KKT Conditions": "094_mathematics_of_support_vector_machine.md"
+      - "Mathematics of SVM: Non-linear Mapping & The Kernel Trick": "095_kernel_trick_in_svm.md"
+      - "SVM Kernel Functions & Hyperparameter Tuning": "096_kernel_trick_in_svm.md"
+  - "Tree-Based & Ensemble Methods":
+      - "Decision Trees: Geometric Intuition & Space Partitioning": "097_decision_trees_geometric_intuition.md"
+      - "Decision Trees: Split Metrics & Hyperparameter Tuning": "098_decision_trees.md"
+      - "Regression Trees: Split Criteria & Variance Reduction": "099_regression_trees.md"
+      - "Decision Tree Visualization & Internal Structure Traversal": "100_awesome_decision_tree_visualization_using_dtreeviz.md"
+      - "Ensemble Learning & Wisdom of Crowds": "101_introduction_to_ensemble_learning.md"
+      - "Voting Ensemble Classifier (Hard vs. Soft Voting)": "102_voting_ensemble.md"
+      - "Voting Ensemble Code Demo & Custom Aggregation": "103_voting_ensemble.md"
+      - "Voting Regressor": "104_voting_ensemble.md"
+      - "Bagging (Bootstrap Aggregation) Intuition": "105_bagging.md"
+      - "Bagging Classifier Code Demo": "106_bagging_ensemble.md"
+      - "Out-of-Bag (OOB) Evaluator": "107_bagging_ensemble.md"
+      - "Random Forest Subspace Feature Sampling": "108_introduction_to_random_forest.md"
+      - "Variance Reduction & Tree Decorrelation": "109_how_random_forest_performs_so_well.md"
+      - "Random Forest vs Bagging & Gini MDI": "110_bagging_vs_random_forest.md"
+      - "Random Forest Hyperparameters": "111_random_forest_hyper-parameters.md"
+      - "Hyperparameter Tuning Random Forest using GridSearchCV": "112_hyperparameter_tuning_random_forest_using_gridsearchcv.md"
+      - "Out-of-Bag (OOB) Score": "113_oob_score.md"
+      - "Feature Importance using Random Forest": "114_feature_importance_using_random_forest_and.md"
+      - "How AdaBoost Classifier Works": "115_how_adaboost_classifier_works.md"
+      - "AdaBoost Code Demo": "116_adaboost.md"
+      - "AdaBoost Algorithm Mechanics": "117_adaboost_algorithm.md"
+      - "AdaBoost Hyperparameters and Shrinkage": "118_adaboost_hyperparameters.md"
+      - "Bagging vs Boosting": "119_bagging_vs_boosting.md"
+      - "Gradient Boosting Regression (Squared Loss)": "120_gradient_boosting_explained.md"
+      - "Gradient Boosting Regression - Leaf Optimization": "121_gradient_boosting_regression_part_2.md"
+      - "Gradient Boosting for Classification": "122_gradient_boosting_for_classification.md"
+      - "Introduction to XGBoost": "123_introduction_to_xgboost.md"
+      - "XGBoost for Regression": "124_xgboost_for_regression.md"
+      - "XGBoost for Classification": "125_xgboost_for_classification.md"
+      - "The Maths Behind XGBoost": "126_the_maths_behind_xgboost.md"
+      - "Stacking and Blending Ensembles": "127_stacking_and_blending_ensembles.md"
+  - "Unsupervised Learning & Clustering":
+      - "K-Means Clustering Algorithm": "128_k-means_clustering_algorithm.md"
+      - "Silhouette Analysis & Elbow Method": "129_k-means_clustering_algorithm_in_python.md"
+      - "K-Means Clustering Algorithm from Scratch": "130_k-means_clustering_algorithm_from_scratch_in.md"
+      - "Agglomerative Hierarchical Clustering": "131_agglomerative_hierarchical_clustering.md"
+      - "DBSCAN Clustering Algorithms": "132_dbscan_clustering_algorithms.md"
+  - "Advanced ML Techniques":
+      - "Imbalanced Data in Machine Learning": "133_imbalanced_data_in_machine_learning.md"
+      - "Hyperparameter Tuning Using Optuna": "134_hyperparameter_tuning_using_optuna.md"
