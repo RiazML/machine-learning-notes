@@ -36,7 +36,7 @@ graph TD
 
 ```python
 import pandas as pd
-df = pd.read_csv("https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv")
+df = pd.read_csv("../data/titanic.csv")
 print(df.shape)
 # Output: (891, 12)
 ```
@@ -144,7 +144,7 @@ This Python script performs a complete diagnostic evaluation on the Titanic data
 import pandas as pd
 
 # Load dataset directly from source
-url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+url = "../data/titanic.csv"
 df = pd.read_csv(url)
 
 print("=== 1. DATA SHAPE ===")

@@ -50,7 +50,7 @@ Pie charts show the relative percentage of each category out of the total.
 
 ```python
 import pandas as pd
-df = pd.read_csv("https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv")
+df = pd.read_csv("../data/titanic.csv")
 df['Embarked'].value_counts().plot(kind='pie', autopct='%1.1f%%')
 ```
 
@@ -117,7 +117,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # 1. Load Data
-url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+url = "../data/titanic.csv"
 df = pd.read_csv(url)
 
 # Clean missing values for plotting

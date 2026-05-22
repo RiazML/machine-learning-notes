@@ -39,7 +39,7 @@ CSV (Comma-Separated Values) files are separated by commas by default. However, 
 - **Tab Separated Values (TSV)**:
 
 ```python
-df = pd.read_csv('movie_titles.tsv', sep='\t')
+df = pd.read_csv('../data/movie_titles.tsv', sep='\t')
 ```
 
 ### B. Custom Header Handling (`header` & `names`)

@@ -90,7 +90,7 @@ Calculates the raw counts of combinations between categories.
 
 ```python
 import pandas as pd
-df = pd.read_csv("https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv")
+df = pd.read_csv("../data/titanic.csv")
 pd.crosstab(df['Pclass'], df['Survived'])
 ```
 
@@ -136,7 +136,7 @@ import seaborn as sns
 
 # Load built-in datasets
 tips = sns.load_dataset("tips")
-titanic = pd.read_csv("https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv")
+titanic = pd.read_csv("../data/titanic.csv")
 flights = sns.load_dataset("flights")
 iris = sns.load_dataset("iris")
 

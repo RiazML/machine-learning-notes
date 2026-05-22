@@ -13,7 +13,7 @@ The project follows a standard operational ML workflow, converting a CSV dataset
 ```mermaid
 graph LR
     subgraph Data Pipeline
-    A[("placement.csv")] --> B["Pandas Preprocessing"]
+    A[("../data/placement.csv")] --> B["Pandas Preprocessing"]
     B --> C["Matplotlib EDA"]
     end
 
@@ -45,7 +45,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load dataset
-df = pd.read_csv('placement.csv')
+df = pd.read_csv('../data/placement.csv')
 print(df.head())
 ```
 

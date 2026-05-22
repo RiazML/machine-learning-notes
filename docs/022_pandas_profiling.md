@@ -54,7 +54,7 @@ import pandas as pd
 from ydata_profiling import ProfileReport
 
 # Load dataset
-df = pd.read_csv("dataset.csv")
+df = pd.read_csv("../data/titanic.csv")
 
 # Generate the report
 profile = ProfileReport(df, title="Exploratory Data Analysis Report", explorative=True)
@@ -136,7 +136,7 @@ import pandas as pd
 from ydata_profiling import ProfileReport
 
 # 1. Load Titanic dataset
-url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+url = "../data/titanic.csv"
 df = pd.read_csv(url)
 
 # 2. Initialize the Profile Report

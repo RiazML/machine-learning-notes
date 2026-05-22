@@ -80,7 +80,7 @@ The dataset contains lists of ingredients mapping to cuisines. Each recipe is re
 import pandas as pd
 
 # Load the local JSON file
-df_recipes = pd.read_json('recipes.json')
+df_recipes = pd.read_json('../data/recipes.json')
 
 # Inspect the loaded DataFrame
 print("DataFrame Shape:", df_recipes.shape)
