@@ -1,8 +1,36 @@
-# 🚀 100+ Days of Machine Learning Study Guide
+# 🚀 100+ Days of Machine Learning
 
-Welcome to the ultimate **Machine Learning Study Guide** repository! This repo contains a comprehensive, day-by-day structured curriculum covering everything from foundational concepts, data preprocessing, regression, classification, to advanced ensemble methods, clustering, and hyperparameter optimization.
+Welcome to the **100+ Days of Machine Learning** repository! This is a comprehensive, day-by-day structured curriculum covering everything from foundational ML concepts, preprocessing, and exploratory data analysis (EDA), to supervised regression, classification, advanced ensemble methods, and unsupervised clustering.
 
-Each day features hands-on notes, visualization/Mermaid flowcharts, mathematical explanations, and fully runnable Python examples.
+Each guide is designed for clarity, completeness, and practical execution.
+
+---
+
+## 🏃 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/RiazML/machine-learning-notes.git
+cd machine-learning-notes
+
+# Set up the environment
+python3 -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\Activate.ps1
+
+# Install dependencies
+pip install numpy pandas scikit-learn matplotlib seaborn xgboost optuna dtreeviz
+
+# Run syntax and compilation audits
+python tests/test_guide.py
+```
+
+Each topic follows a **3-step learning structure**:
+
+```
+📖 Theory & Math   -> Clean explanations with LaTeX-rendered formulations
+📊 Flowcharts      -> Interactive, parse-verified Mermaid diagrams
+🐍 Implementations -> Clean, left-aligned, offline-runnable Python code
+```
 
 ---
 
@@ -181,35 +209,8 @@ Here is a structured index of the daily notes. Click on any topic to view the de
 
 ---
 
-## 🛠️ Setup & Running Examples Locally
-
-To run the Python code blocks or verify the setup locally, follow these steps:
-
-### Prerequisites
-Make sure you have Python 3.8+ installed.
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/YOUR_USERNAME/ml.git
-cd ml
-```
-
-### 2. Create and activate a Virtual Environment
-```bash
-python3 -m venv .venv
-source .venv/bin/activate  # On macOS/Linux
-# Or
-.venv\\Scripts\\activate  # On Windows
-```
-
-### 3. Install common dependencies
-```bash
-pip install numpy pandas scikit-learn matplotlib seaborn xgboost optuna dtreeviz
-```
-
----
-
 ## 🧑‍💻 Contributing & Feedback
+
 Contributions are welcome! If you find a typo, want to improve explanations, or add extra code examples:
 1. Fork this repository.
 2. Create a feature branch: `git checkout -b feature/improvement`
@@ -220,4 +221,5 @@ Contributions are welcome! If you find a typo, want to improve explanations, or 
 ---
 
 ## 📄 License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
