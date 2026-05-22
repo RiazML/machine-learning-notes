@@ -17,9 +17,9 @@ DBSCAN (Density-Based Spatial Clustering of Applications with Noise) is a powerf
 ```mermaid
 graph TD
     subgraph Point Classification
-        A["Check Epsilon Neighborhood of Point p: N_eps("p")"] --> B{Is |N_eps("p")| >= MinPts?}
+        A["Check Epsilon Neighborhood of Point p: N_eps('p')"] --> B{"Is |N_eps('p')| >= MinPts?"}
         B -- Yes --> C["Label p as CORE Point"]
-        B -- No --> D{Does N_eps("p") contain at least one CORE Point?}
+        B -- No --> D{"Does N_eps('p') contain at least one CORE Point?"}
         D -- Yes --> E["Label p as BORDER Point"]
         D -- No --> F["Label p as NOISE/Outlier Point"]
     end
@@ -67,12 +67,12 @@ graph TD
     A["Start: Initialize all points as unvisited"] --> B["Loop through each unvisited point p"]
     B --> C{"Is p a CORE point?"}
     C -- Yes --> D["Create new cluster C_id"]
-    D --> E["Add p to C_id and initialize queue with N_eps("p")"]
+    D --> E["Add p to C_id and initialize queue with N_eps('p')"]
     E --> F["Process queue BFS: for each neighbor n"]
     F --> G{"Is n unvisited?"}
     G -- Yes --> H["Set n as visited, assign to C_id"]
     H --> I{"Is n a CORE point?"}
-    I -- Yes --> J["Add N_eps("n") to queue"]
+    I -- Yes --> J["Add N_eps('n') to queue"]
     I -- No --> K["Continue"]
     G -- No --> L{"Is n labeled as noise?"}
     L -- Yes --> M["Relabel n to C_id as Border point"]
