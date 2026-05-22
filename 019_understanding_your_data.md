@@ -182,7 +182,7 @@ print(correlation_matrix['Survived'].sort_values(ascending=False))
 
 ---
 
-## 4. YouTuber Analogies and Practical Tips
+## 4. Practical Tips and Analogies
 
 > [!NOTE]
 > **The Ordering Bias**: When datasets are compiled, they are often saved in the order they were collected. For example, in a medical dataset, survival outcomes might be sorted such that all deceased patients are at the bottom. Relying strictly on `.head()` might mislead you into thinking "everyone survived" or "everyone is under 30". Always use `.sample()` to get an unbiased, horizontal view of the data.

@@ -193,7 +193,7 @@ print(titanic.groupby('Pclass')['Survived'].mean() * 100)
 
 ---
 
-## 7. YouTuber Analogies and Practical Tips
+## 7. Practical Tips and Analogies
 
 > [!NOTE]
 > **Understanding the Error Bars**: In a bar plot (`sns.barplot`), the small black T-shaped lines at the top of each bar are not decoration. They represent the **95% Confidence Interval (CI)**. If the confidence intervals of two bars overlap significantly, it suggests that the difference in means between those two categories is statistically insignificant.

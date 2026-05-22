@@ -166,7 +166,7 @@ print("Export Complete! Open the HTML file in your web browser to interact with 
 
 ---
 
-## 5. YouTuber Analogies and Practical Tips
+## 5. Practical Tips and Analogies
 
 > [!WARNING]
 > **The Out-of-Memory (OOM) Danger**: Automated profiling executes pairwise comparisons ($O(N^2)$ operations). Running it on a dataset with millions of rows or hundreds of columns will crash your system or hang indefinitely.

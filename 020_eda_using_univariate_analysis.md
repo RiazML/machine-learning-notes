@@ -177,7 +177,7 @@ plt.show()
 
 ---
 
-## 5. YouTuber Analogies and Practical Tips
+## 5. Practical Tips and Analogies
 
 > [!NOTE]
 > **The Box Plot "Whisker" Myth**: Beginners often think the whiskers of a box plot represent the minimum and maximum values of the dataset. This is incorrect. The whiskers represent the **Fences** ($Q_1 - 1.5 \times \text{IQR}$ and $Q_3 + 1.5 \times \text{IQR}$). Any points plotted beyond the whiskers are mathematically defined outliers.

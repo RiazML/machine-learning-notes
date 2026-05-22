@@ -201,7 +201,7 @@ print(df_large_cities.head(10))
 
 ---
 
-## 4. YouTuber Analogies and Practical Tips
+## 4. Practical Tips and Analogies
 
 > [!TIP]
 >
