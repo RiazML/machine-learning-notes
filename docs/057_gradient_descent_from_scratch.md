@@ -12,9 +12,9 @@ While Ordinary Least Squares (OLS) closed-form solutions work well for small dat
 graph TD
     A["Optimization Strategy"] --> B["Closed-Form OLS"]
     A --> C["Gradient Descent"]
-    B --> B1["Complexity: O("p^3") matrix inversion"]
+    B --> B1["Complexity: O(p^3) matrix inversion"]
     B --> B2["Infeasible for very large feature counts"]
-    C --> C1["Complexity: O("K * N * p") iterative updates"]
+    C --> C1["Complexity: O(K * N * p) iterative updates"]
     C --> C2["Highly scalable and memory efficient"]
 ```
 
@@ -53,7 +53,7 @@ $$c \leftarrow c - \alpha \frac{\partial J}{\partial c}$$
 ```mermaid
 graph TD
     Start["Initialize slope m & intercept c randomly"] --> ComputePred["Compute predictions: y_pred = m*x + c"]
-    ComputePred --> ComputeCost["Compute Cost J("m,c") = MSE"]
+    ComputePred --> ComputeCost["Compute Cost J(m,c) = MSE"]
     ComputeCost --> CheckConv{"Cost delta < tolerance or max epochs?"}
     CheckConv -- Yes --> End["Model converged. Return parameters"]
     CheckConv -- No --> CompGrad["Compute partial derivatives: dJ/dm & dJ/dc"]
@@ -159,4 +159,4 @@ print("\n[SUCCESS] Custom gradient descent solver matched standard Scikit-Learn 
 
 ---
 
-- **Next Topic**: [058_batch_gradient_descent_with_code_demo.md](file:///Users/prime/Developer/ml/058_batch_gradient_descent_with_code_demo.md) - Vectorized Batch Gradient Descent for Multiple Features.
+- **Next Topic**: [058_batch_gradient_descent_with_code_demo.md](058_batch_gradient_descent_with_code_demo.md) - Vectorized Batch Gradient Descent for Multiple Features.
